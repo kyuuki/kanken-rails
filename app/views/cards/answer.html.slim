@@ -1,0 +1,12 @@
+.row
+  .col-12
+    h2.my-3 答え
+
+    .card
+      .card-body
+        h3.card-title.text-danger
+          = @card.answer
+        .card-subtitle.mb-2.text-muted
+          = @card.question
+        = link_to "次の問題", card_path(@next_card), class: "btn btn-primary col-12"
+
