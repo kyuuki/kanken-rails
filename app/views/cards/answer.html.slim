@@ -1,6 +1,6 @@
 .row
   .col-12
-    h2.my-3 答え
+    h2.h4.my-3 答え
 
     .card
       .card-body
@@ -8,5 +8,8 @@
           = @card.answer
         .card-subtitle.mb-2.text-muted
           = @card.question
-        = link_to "次の問題", card_path(@next_card), class: "btn btn-primary col-12"
+
+.row
+  .col-12
+    = link_to "次の問題", card_path(@next_card), class: "btn btn-primary btn-block"
 

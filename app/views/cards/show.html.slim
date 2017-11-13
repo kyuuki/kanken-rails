@@ -1,9 +1,13 @@
 .row
   .col-12
-    h2.my-3 問題
+    h2.h4.my-3 問題
 
     .card
       .card-body
         h3.card-title
           = @card.question
-        = link_to "答え", answer_card_path(@card), class: "btn btn-danger col-12"
+
+.row
+  .col-12
+    = link_to "答え", answer_card_path(@card), class: "btn btn-danger btn-block"
+
