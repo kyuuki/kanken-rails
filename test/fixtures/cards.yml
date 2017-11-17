@@ -1,11 +1,38 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  question: MyString
-  answer: MyString
-  comment: MyText
+1:
+  id: 1
+  question: 祁寒
+  answer: きかん
+  comment: "意味: とても寒いこと。"
 
-two:
-  question: MyString
-  answer: MyString
-  comment: MyText
+2:
+  id: 2
+  question: 杵臼
+  answer: しょきゅう
+  comment: "意味: きねとうす。"
+
+3:
+  id: 3
+  question: 購う（表外の読み）
+  answer: あがな
+  comment: "意味: 買い求める。"
+
+4:
+  id: 4
+  question: 垂とする（表外の読み）
+  answer: なんなん
+  comment: "意味: まさになろうとする。"
+
+5:
+  id: 5
+  question: 遊び（表外の読み）
+  answer: すさ
+  comment: "意味: 慰みごと。"
+
+6:
+  id: 6
+  question: 栂
+  answer: とが・つが
+  comment: "意味: マツ科の木。"
+
