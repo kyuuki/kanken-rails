@@ -11,3 +11,14 @@
   .col-12
     = link_to "答え", answer_card_path(@card), class: "btn btn-danger btn-block"
 
+.row
+  .col-6
+    - @log_last_action.each do |log_action|
+      - if log_action.action.nil?
+        | ○
+      - elsif log_action.action == 1
+        | ×
+      - elsif log_action.action == 2
+        | ◎
+
+

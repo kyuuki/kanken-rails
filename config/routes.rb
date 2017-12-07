@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :cards, only: [ :show ] do
     member do
       get 'answer'
+      get 'action'
     end
   end
 end
