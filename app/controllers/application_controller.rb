@@ -10,7 +10,9 @@ class ApplicationController < ActionController::Base
     end
 
     if client == nil
-      client = Client.create(user_agent: request.user_agent, ip: request.remote_ip)
+      # http://kyamada.hatenablog.com/entry/2012/09/21/195603
+      remote_ip = request.env["HTTP_X_FORWARDED_FOR"] || request.remote_ip
+      client = Client.create(user_agent: request.user_agent, ip: remote_ip)
       session[:clinet_id] = client.id
     else
       client.user_agent = request.user_agent
