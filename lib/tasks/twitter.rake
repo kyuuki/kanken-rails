@@ -11,6 +11,6 @@ namespace :twitter do
     end
 
     card = Card.offset(rand(Card.count)).first
-    client.update("【漢検準1級読み】「#{card.question}」 答え → http://kanken.akoba.xyz#{Rails.application.routes.url_helpers.answer_card_path(card)} #漢検")
+    client.update("「#{card.question}」 答え → http://kanken.akoba.xyz#{Rails.application.routes.url_helpers.answer_card_path(card)} #漢検")
   end
 end
