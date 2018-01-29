@@ -26,5 +26,6 @@ SitemapGenerator::Sitemap.create do
   #   end
   Card.find_each do |card|
     add card_path(card)
+    add answer_card_path(card)
   end
 end
