@@ -55,6 +55,7 @@ gem 'slim-rails'
 
 # SEO
 gem 'sitemap_generator'
+gem 'meta-tags'
 
 # Twitter ボット
 gem 'twitter'
