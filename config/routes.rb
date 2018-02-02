@@ -8,4 +8,10 @@ Rails.application.routes.draw do
       get 'action'
     end
   end
+
+  # 管理画面
+  namespace 'admin' do
+    root to: 'welcome#index'
+    resources :cards
+  end
 end
