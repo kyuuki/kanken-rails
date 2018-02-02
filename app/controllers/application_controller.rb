@@ -16,12 +16,19 @@ class ApplicationController < ActionController::Base
     if client == nil
       # http://kyamada.hatenablog.com/entry/2012/09/21/195603
       # https://qiita.com/ledsun/items/c947b453ba97661afcef
-      client = Client.create(user_agent: request.user_agent, ip: remote_ip)
-      set_client_id(client.id)
+      client = Client.new(user_agent: request.user_agent, ip: remote_ip)
+
+      if client.is_bot?
+        client.id = 1
+      else
+        client.save  # TODO: エラー処理
+        set_client_id(client.id)
+      end
     else
       client.user_agent = request.user_agent
       client.ip = remote_ip
-      client.save  # 値に変更がない場合は更新されない # TODO: エラー処理
+      client.touch  # 値に変更がない場合も更新
+      client.save  # TODO: エラー処理
     end
 
     return client

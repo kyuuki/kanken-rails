@@ -11,7 +11,9 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
 
     # 解答表示ログ記録
-    LogAction.create(client: client, card: @card)
+    if not client.is_bot?
+      LogAction.create(client: client, card: @card)
+    end
   end
 
   def action
@@ -19,7 +21,7 @@ class CardsController < ApplicationController
     card = Card.find(params[:id])
 
     # アクションログ記録
-    unless params[:act].nil?
+    if not params[:act].nil? and not client.is_bot?
       log_action = LogAction.where(client: client).order(id: :desc).first
       if log_action.card.id == card.id
         log_action.action = params[:act]
