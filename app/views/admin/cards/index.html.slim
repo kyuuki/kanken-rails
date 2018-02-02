@@ -1,0 +1,23 @@
+- content_for :title
+  | カード一覧
+
+.box
+  .box-header.with-border
+    .pull-right
+      = link_to root_path, { class: "btn btn-default btn-sm" } do
+        i.fa.fa-plus
+        | &nbsp; 新規作成
+
+  .box-body.table-responsive.no-padding
+    table.table.table-bordered.table-hover
+      thead
+        tr
+          th(style="width: 10px;") ID
+          th(style="width: 20%;") 問題
+          th(style="width: 20%;") 答え
+          th コメント
+          th
+      tbody
+        == render @cards
+
+  .box-footer

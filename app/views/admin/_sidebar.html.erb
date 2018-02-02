@@ -2,12 +2,24 @@
 <ul class="sidebar-menu" data-widget="tree">
   <li class="header">メイン</li>
   <!-- Optionally, you can add icons to the links -->
-  <li class="active">
-    <%= link_to root_path do %>
+  <% if request.path_info == admin_cards_path %>
+    <li class="active">
+  <% else %>
+    <li>
+  <% end %>
+    <%= link_to admin_cards_path do %>
       <i class="fa fa-link"></i> <span>カード一覧</span>
     <% end %>
   </li>
-  <li><a href="#"><i class="fa fa-link"></i> <span>クライアント一覧</span></a></li>
+  <% if request.path_info == admin_clients_path %>
+    <li class="active">
+  <% else %>
+    <li>
+  <% end %>
+    <%= link_to admin_clients_path do %>
+      <i class="fa fa-link"></i> <span>クライアント一覧</span>
+    <% end %>
+  </li>
   <li class="treeview">
     <a href="#"><i class="fa fa-link"></i> <span>設定</span>
       <span class="pull-right-container">

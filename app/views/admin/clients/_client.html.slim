@@ -1,0 +1,7 @@
+tr
+  td = client.id
+  td = client.user_agent
+  td(style="width: word-break: break-all;") = client.ip.truncate(30)
+  td = l client.created_at
+  td = l client.updated_at
+

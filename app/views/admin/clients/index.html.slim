@@ -1,0 +1,19 @@
+- content_for :title
+  | クライアント一覧
+
+.box
+  .box-header.with-border
+
+  .box-body.table-responsive.no-padding
+    table.table.table-bordered.table-hover
+      thead
+        tr
+          th(style="width: 10px;") ID
+          th User Agent
+          th(style="width: 20%") IP
+          th(style="width: 15%") 作成日時
+          th(style="width: 15%") 更新日時
+      tbody
+        == render @clients
+
+  .box-footer
