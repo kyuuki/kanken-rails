@@ -37,4 +37,13 @@ class Client < ApplicationRecord
 
     return false
   end
+
+  # 自分のクライアントかどうか？
+  def is_home?
+    if ip == Rails.application.secrets.home_ip
+      return true
+    end
+
+    return false
+  end
 end

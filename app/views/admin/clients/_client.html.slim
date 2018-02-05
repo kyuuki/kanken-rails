@@ -1,7 +1,14 @@
 tr
   td = client.id
   td = client.user_agent
-  td(style="width: word-break: break-all;") = client.ip.truncate(30)
+  - if client.is_home?
+    td.bg-danger(style="width: word-break: break-all;") = client.ip
+  - else
+    td(style="width: word-break: break-all;")
+      = link_to client.ip.truncate(30), "http://keiromichi.com/index.php?ip=#{client.ip}", { target: "_blank" }
   td = l client.created_at
-  td = l client.updated_at
+  - if client.created_at == client.updated_at
+    td = l client.updated_at
+  - else
+    td.bg-success = l client.updated_at
 
