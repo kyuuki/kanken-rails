@@ -1,0 +1,23 @@
+= form_for [ :admin, card ], html: { class: "form-horizontal" } do |form|
+
+  .box
+    .box-body
+      .form-group
+        = form.label :question, "", class: "col-sm-2 control-label"
+        .col-sm-5
+          = form.text_field :question, class: "form-control"
+      .form-group
+        = form.label :answer, "", class: "col-sm-2 control-label"
+        .col-sm-5
+          = form.text_field :answer, class: "form-control"
+      .form-group
+        = form.label :comment, "", class: "col-sm-2 control-label"
+        .col-sm-5
+          = form.text_field :comment, class: "form-control"
+
+    .box-footer
+      .form-group
+        .col-sm-offset-2.col-sm-5
+          = form.submit class: "btn btn-info"
+
+

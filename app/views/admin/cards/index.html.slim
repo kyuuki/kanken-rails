@@ -4,7 +4,7 @@
 .box
   .box-header.with-border
     .pull-right
-      = link_to root_path, { class: "btn btn-default btn-sm" } do
+      = link_to new_admin_card_path, { class: "btn btn-default btn-sm" } do
         i.fa.fa-plus
         | &nbsp; 新規作成
 
@@ -15,8 +15,8 @@
           th(style="width: 10px;") ID
           th(style="width: 20%;") 問題
           th(style="width: 20%;") 答え
-          th コメント
-          th
+          th(style="width: 30%;") コメント
+          th(style="width: 20%;")
       tbody
         == render @cards
 
