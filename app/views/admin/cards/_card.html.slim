@@ -1,8 +1,13 @@
 tr
-  td = card.id
+  td
+    = card.id
+    | &nbsp;
+    = link_to "問", card, class: "btn btn-default btn-xs"
+    | &nbsp;
+    = link_to "答", answer_card_path(card), class: "btn btn-default btn-xs"
   td = card.question
   td = card.answer
-  td = card.comment
+  td = card.comment.truncate(30)
   td.text-right
     = link_to "編集", edit_admin_card_path(card), { class: "btn btn-default btn-sm" }
     | &nbsp;

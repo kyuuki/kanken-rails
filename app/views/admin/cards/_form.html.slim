@@ -1,6 +1,9 @@
 = form_for [ :admin, card ], html: { class: "form-horizontal" } do |form|
 
   .box
+    .box-header.with-border
+      h3.box-title カード
+
     .box-body
       .form-group
         = form.label :question, "", class: "col-sm-2 control-label"
@@ -12,12 +15,12 @@
           = form.text_field :answer, class: "form-control"
       .form-group
         = form.label :comment, "", class: "col-sm-2 control-label"
-        .col-sm-5
-          = form.text_field :comment, class: "form-control"
+        .col-sm-8
+          = form.text_area :comment, size: "10x10", class: "form-control"
 
     .box-footer
       .form-group
         .col-sm-offset-2.col-sm-5
-          = form.submit class: "btn btn-info"
+          = form.submit class: "btn btn-info btn-sm"
 
 
