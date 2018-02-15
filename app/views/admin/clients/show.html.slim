@@ -1,0 +1,44 @@
+- content_for :title
+  | クライアント詳細
+
+.box
+  .box-header.with-border
+    h3.h4 基本情報
+
+  .box-body
+    .form-horizontal
+      .form-group
+        label.col-sm-2.control-label ID
+        .col-sm-5
+          .form-control
+            = @client.id
+      .form-group
+        label.col-sm-2.control-label User Agent
+        .col-sm-8
+          textarea.form-control rows=3
+            = @client.user_agent
+      .form-group
+        label.col-sm-2.control-label IP
+        .col-sm-5
+          .form-control
+            = @client.ip
+
+  .box-footer
+
+.box
+  .box-header.with-border
+    h3.h4 アクションログ
+
+  .box-body.table-responsive.no-padding
+    table.table.table-bordered.table-hover
+      thead
+        tr
+          th.col-sm-1 ID
+          th.col-sm-5 colspan=2 カード
+          th.col-sm-2 アクション
+          th.col-sm-2 作成日時
+          th.col-sm-2 更新日時
+      tbody
+        == render partial: "log_action", collection: @log_actions
+
+  .box-footer

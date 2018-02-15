@@ -1,5 +1,6 @@
 tr
-  td = client.id
+  td
+    = link_to client.id, admin_client_path(client), class: "btn btn-default btn-xs"
   td = client.user_agent
   - if client.is_home?
     td.bg-danger(style="width: word-break: break-all;") = client.ip

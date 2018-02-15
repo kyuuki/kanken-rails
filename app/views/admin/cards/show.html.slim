@@ -1,0 +1,49 @@
+- content_for :title
+  | カード詳細
+
+.box
+  .box-header.with-border
+    h3.h4 基本情報
+
+  .box-body
+    .form-horizontal
+      .form-group
+        label.col-sm-2.control-label ID
+        .col-sm-2
+          .form-control
+            = @card.id
+      .form-group
+        label.col-sm-2.control-label 問
+        .col-sm-5
+          .form-control
+            = @card.question
+      .form-group
+        label.col-sm-2.control-label 答
+        .col-sm-5
+          .form-control
+            = @card.answer
+      .form-group
+        label.col-sm-2.control-label コメント
+        .col-sm-8
+          textarea.form-control rows=10 readonly="readonly"
+            = @card.comment
+
+  .box-footer
+
+.box
+  .box-header.with-border
+    h3.h4 アクションログ
+
+  .box-body.table-responsive.no-padding
+    table.table.table-bordered.table-hover
+      thead
+        tr
+          th.col-sm-1 ID
+          th.col-sm-5 colspan=2 クライアント
+          th.col-sm-2 アクション
+          th.col-sm-2 作成日時
+          th.col-sm-2 更新日時
+      tbody
+        == render partial: "log_action", collection: @log_actions
+
+  .box-footer

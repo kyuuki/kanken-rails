@@ -1,6 +1,6 @@
 tr
   td
-    = card.id
+    = link_to card.id, admin_card_path(card), class: "btn btn-default btn-xs"
     | &nbsp;
     = link_to "問", card, class: "btn btn-default btn-xs"
     | &nbsp;

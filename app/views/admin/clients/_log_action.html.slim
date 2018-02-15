@@ -1,0 +1,8 @@
+tr
+  td = log_action.id
+  td = link_to log_action.card.id, admin_card_path(log_action.card)
+  td = log_action.card.question
+  td = log_action.action
+  td = l log_action.created_at
+  td = l log_action.updated_at
+

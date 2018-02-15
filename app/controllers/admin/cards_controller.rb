@@ -3,6 +3,11 @@ class Admin::CardsController < Admin::ApplicationController
     @cards = Card.order(:id)
   end
 
+  def show
+    @card = Card.find(params[:id])
+    @log_actions = @card.log_actions.order(id: :desc).includes(:client)
+  end
+
   def new
     @card = Card.new
   end
