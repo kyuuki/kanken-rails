@@ -3,7 +3,7 @@ class CardsController < ApplicationController
     client = current_client
     @card = Card.find(params[:id])
 
-    @log_last_action = LogAction.where(client: client, card: @card).order(id: :desc).limit(10)
+    @latest_log_actions = LogAction.where(client: client, card: @card).where.not(action: nil).order(id: :desc).limit(10)
   end
 
   def answer

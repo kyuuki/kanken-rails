@@ -12,16 +12,22 @@
 
 .row
   .col-12
-    = link_to "答え", answer_card_path(@card), class: "btn btn-danger btn-block"
+    .card
+      .card-header
+        | これまでの結果 （新 ←→ 古）
+
+      .card-body
+        - if @latest_log_actions.size == 0
+          .text-muted （まだ結果がありません）
+        - else
+          - @latest_log_actions.each do |log_action|
+            - if log_action.action == 1
+              | ×
+            - elsif log_action.action == 2
+              | ○
 
 .row
-  .col-6
-    - @log_last_action.each do |log_action|
-      - if log_action.action.nil?
-        | ○
-      - elsif log_action.action == 1
-        | ×
-      - elsif log_action.action == 2
-        | ◎
+  .col-12
+    = link_to "答え", answer_card_path(@card), class: "btn btn-danger btn-block"
 
 
