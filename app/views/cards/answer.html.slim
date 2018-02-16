@@ -7,6 +7,10 @@
 
     .card
       .card-body
+        .text-right.text-muted
+          | 正答率:&nbsp;
+          = number_with_precision(@card.correct_answer_rate * 100, precision: 1)
+          | %
         h3.card-title.text-danger
           = @card.answer
         .card-subtitle.mb-2.text-muted
@@ -20,7 +24,7 @@
 
 .row
   .col-6
-    = link_to "また間違えた…", action_card_path(@card, { act: '1' }), class: "btn btn-warning btn-block"
+    = link_to "間違えた…", action_card_path(@card, { act: LogAction::ACTION_NG }), class: "btn btn-warning btn-block"
   .col-6
-    = link_to "簡単！", action_card_path(@card, { act: '2' }), class: "btn btn-success btn-block"
+    = link_to "正解した！", action_card_path(@card, { act: LogAction::ACTION_OK }), class: "btn btn-success btn-block"
 
