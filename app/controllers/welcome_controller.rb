@@ -1,7 +1,11 @@
 class WelcomeController < ApplicationController
   def index
-    @next_card = Card.offset(rand(Card.count)).first
+    @cards = Card.order(:id)
+  end
 
-    redirect_to @next_card
+  def start
+    next_card = Card.offset(rand(Card.count)).first
+
+    redirect_to next_card
   end
 end

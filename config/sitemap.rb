@@ -24,6 +24,8 @@ SitemapGenerator::Sitemap.create do
   #   Article.find_each do |article|
   #     add article_path(article), :lastmod => article.updated_at
   #   end
+  add root_path
+
   Card.find_each do |card|
     add card_path(card)
     add answer_card_path(card)
