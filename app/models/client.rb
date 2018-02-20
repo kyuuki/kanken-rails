@@ -1,6 +1,26 @@
 class Client < ApplicationRecord
   has_many :log_actions
 
+  def self.make_headers_hash(request)
+    header_keys = [
+                   "HTTP_HOST",
+                   "HTTP_ACCEPT",
+                   "HTTP_ACCEPT_ENCODING",
+                   "HTTP_ACCEPT_LANGUAGE",
+                   "HTTP_REFERER",
+                  ]
+
+    # かっこつける必要なさげ
+    # hash = header_keys.inject({}) { |h, v| h[v] = request.headers[v]; h }
+    hash = {}
+    header_keys.each do |key|
+      hash[key] = request.headers[key]
+    end
+
+    return hash
+  end
+
+  # TODO: Client はできるだけ独立にしたいので別の場所に移動
   def get_next_card(prev_card)
     # 3 つ前が間違えだったらそれを出題
     log_action = LogAction.where(client: self).order(id: :desc).limit(3 + 1).last
