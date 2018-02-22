@@ -5,31 +5,34 @@ class ApplicationController < ActionController::Base
   private
 
   def current_client
-    client_id = get_client_id
+    client_id = get_client_id_from_cookies
 
     client = nil
     if not client_id == nil
       client = Client.find_by_id(client_id)
-      set_client_id(nil) if client == nil  # おかしい…なので client_id を一度リセット
+      if client == nil
+        # TODO: おかしい…のでログ出したい。client_id は以下で再設定
+      end
     end
 
-    remote_ip = request.env["HTTP_X_FORWARDED_FOR"] || request.remote_ip
-
     if client == nil
-      # http://kyamada.hatenablog.com/entry/2012/09/21/195603
-      # https://qiita.com/ledsun/items/c947b453ba97661afcef
-      client = Client.new(user_agent: request.user_agent, ip: remote_ip, header: Client.make_headers_hash(request).to_json)
+      #
+      # 新規クライアント
+      #
+      client = Client.new
+      client.set_from_request(request)
 
       if client.is_bot?
-        client.id = 1
+        client.id = 1  # TODO: nil でもいい？
       else
         client.save  # TODO: エラー処理
-        set_client_id(client.id)
+        set_client_id_to_cookies(client.id)
       end
     else
-      client.user_agent = request.user_agent
-      client.ip = remote_ip
-      client.header = Client.make_headers_hash(request).to_json
+      #
+      # 既存クライアント
+      #
+      client.set_from_request(request)
       client.touch  # 値に変更がない場合も更新
       client.save  # TODO: エラー処理
     end
@@ -37,11 +40,11 @@ class ApplicationController < ActionController::Base
     return client
   end
 
-  def get_client_id
+  def get_client_id_from_cookies
     return cookies.permanent.signed[:client_id]
   end
 
-  def set_client_id(client_id)
+  def set_client_id_to_cookies(client_id)
     cookies.permanent.signed[:client_id] = client_id
   end
 
