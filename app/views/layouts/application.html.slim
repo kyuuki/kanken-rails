@@ -40,7 +40,8 @@ html
   body
     main.container
       h1.h3
-        = link_to "漢検 準1級 読み", root_path
+        = link_to root_path do
+          img src="/logo.png" alt="漢検 準1級 読み"
       p.lead.h5.text-muted
         | 只管、読み問題をこなすサイトです。あまり出題頻度の高くないものを中心に出題します。
 
