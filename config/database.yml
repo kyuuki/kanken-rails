@@ -82,6 +82,7 @@ test:
 #
 production:
   <<: *default
-  database: kanken-rails_production
-  username: kanken-rails
-  password: <%= ENV['KANKEN-RAILS_DATABASE_PASSWORD'] %>
+  database: kanken_production
+  username: kanken_production
+  #password: <%= ENV['KANKEN-RAILS_DATABASE_PASSWORD'] %>
+  password: <%= Rails.application.secrets[:database][:password] %>
