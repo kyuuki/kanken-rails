@@ -1,6 +1,6 @@
 class Admin::CardsController < Admin::ApplicationController
   def index
-    @cards = Card.order(:id)
+    @cards = Card.order(id: :desc)
   end
 
   def show
