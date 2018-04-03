@@ -27,6 +27,14 @@
         .col-sm-8
           textarea.form-control rows=10 readonly="readonly"
             = @card.comment
+      .form-group
+        label.col-sm-2.control-label 作成者
+        .col-sm-5
+          .form-control
+            - if not @card.card_owner.nil?
+              = @card.card_owner.admin_user.email
+            - else
+              | (不明)
 
   .box-footer
 

@@ -1,5 +1,6 @@
 class Card < ApplicationRecord
   has_many :log_actions
+  has_one :card_owner
 
   def count_action_ok
     # 1 はなんとかせな

@@ -21,6 +21,7 @@ class Admin::CardsController < Admin::ApplicationController
 
     respond_to do |format|
       if @card.save
+        CardOwner.create(card: @card, admin_user: current_admin_user)  # TODO: トランザクションできちんと
         format.html { redirect_to admin_cards_url, notice: 'Card was successfully created.' }
         format.json { render :show, status: :created, location: @card }
       else

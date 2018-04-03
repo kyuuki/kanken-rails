@@ -53,9 +53,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'slim-rails'
 
+# ログイン
+gem 'devise'
+
 # SEO
 gem 'sitemap_generator'
 gem 'meta-tags'
 
 # Twitter ボット
 gem 'twitter'
+

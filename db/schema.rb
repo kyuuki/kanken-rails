@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180220122940) do
+ActiveRecord::Schema.define(version: 20180403080138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "card_owners", force: :cascade do |t|
+    t.bigint "card_id"
+    t.bigint "admin_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_user_id"], name: "index_card_owners_on_admin_user_id"
+    t.index ["card_id"], name: "index_card_owners_on_card_id"
+  end
 
   create_table "cards", force: :cascade do |t|
     t.string "question"
@@ -41,6 +67,8 @@ ActiveRecord::Schema.define(version: 20180220122940) do
     t.index ["client_id"], name: "index_log_actions_on_client_id"
   end
 
+  add_foreign_key "card_owners", "admin_users"
+  add_foreign_key "card_owners", "cards"
   add_foreign_key "log_actions", "cards"
   add_foreign_key "log_actions", "clients"
 end

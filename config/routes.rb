@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   end
 
   # 管理画面
+
+  # https://www.tmp1024.com/programming/post-4661
+  devise_for :admin_users, path: 'admin/users'
+
   namespace 'admin' do
     root to: 'welcome#index'
     resources :cards
