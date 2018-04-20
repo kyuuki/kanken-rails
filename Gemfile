@@ -63,3 +63,5 @@ gem 'meta-tags'
 # Twitter ボット
 gem 'twitter'
 
+# 通知
+gem 'slack-notifier'

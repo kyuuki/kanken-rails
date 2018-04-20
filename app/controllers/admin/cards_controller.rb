@@ -22,6 +22,10 @@ class Admin::CardsController < Admin::ApplicationController
     respond_to do |format|
       if @card.save
         CardOwner.create(card: @card, admin_user: current_admin_user)  # TODO: トランザクションできちんと
+        notifier = Slack::Notifier.new(Rails.application.secrets.slack_webhook_url,
+                                       channel: "#random", username: "kanken-rails")
+        notifier.ping "漢検問題追加: #{@card.question}"
+
         format.html { redirect_to admin_cards_url, notice: 'Card was successfully created.' }
         format.json { render :show, status: :created, location: @card }
       else
