@@ -1,6 +1,8 @@
 class Admin::CardsController < Admin::ApplicationController
   def index
-    @cards = Card.order(id: :desc)
+    @ransack = Card.ransack(params[:q])
+    @ransack.sorts = "id DESC"
+    @cards = @ransack.result.page(params[:page])
   end
 
   def show

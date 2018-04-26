@@ -3,12 +3,22 @@
 
 .box
   .box-header.with-border
+    .pull-left
+      = search_form_for @ransack, url: admin_cards_path, html: { class: "form-inline" } do |f|
+        .form-group
+          = f.search_field :question_or_answer_or_comment_cont, placeholder: "問題、答え、コメントに含まれる文字を検索します", class: "form-control", size: 50
+        | &nbsp;
+        = f.submit class: "btn btn-default btn-sm"
+        | &nbsp;
+        = link_to "リセット", url_for, class: "btn btn-default btn-sm"
     .pull-right
       = link_to new_admin_card_path, { class: "btn btn-default btn-sm" } do
         i.fa.fa-plus
         | &nbsp; 新規作成
 
-  .box-body.table-responsive.no-padding
+  .box-body.table-responsive
+    = paginate @cards
+
     table.table.table-bordered.table-hover
       thead
         tr
@@ -19,6 +29,8 @@
           th.col-sm-2
       tbody
         == render @cards
+
+    = paginate @cards
 
   .box-footer
     .pull-right
