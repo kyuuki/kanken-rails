@@ -35,6 +35,16 @@
               = @card.card_owner.admin_user.email
             - else
               | (不明)
+      .form-group
+        label.col-sm-2.control-label 作成日
+        .col-sm-3
+          .form-control
+            = l @card.created_at
+      .form-group
+        label.col-sm-2.control-label 更新日
+        .col-sm-3
+          .form-control
+            = l @card.updated_at
 
   .box-footer
 

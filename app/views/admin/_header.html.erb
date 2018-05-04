@@ -22,6 +22,8 @@
         </a>
         <ul class="dropdown-menu">
           <li class="header">問題作成数: <%= current_admin_user.card_owners.count %></li>
+          <li class="header">- 2018/04: <%= current_admin_user.count_card_owners_created_in_year_month(2018, 4) %></li>
+          <li class="header">- 2018/05: <%= current_admin_user.count_card_owners_created_in_year_month(2018, 5) %></li>
           <li>
             <!-- Inner menu: contains the tasks -->
             <ul class="menu">
