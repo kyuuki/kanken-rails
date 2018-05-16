@@ -5,20 +5,37 @@
         h2.h4.card-title 本サイトの特長
         ul
           li 漢検 準1級の読み問題を次から次へと只管、出し続けます
-          li 間違った問題は数問後に再び出題されるため、覚えたかどうかをすぐにチェックできます。
+          li
+            | 間違った問題は 3 問後に再び出題されるため、
+            span.text-primary 確実に記憶できます！
           li 答えのページに記憶の定着に役に立ちそうな情報を表示しています。
+          li 出題頻度の高くない問題を中心に出題するので、市販テキストとの併用が効果的です。
+        ul
+          li
+            span.h5.text-danger
+              = "総問題数 #{Card.count} 問"
+              | &nbsp;
+            span.text-muted
+              | 日々追加中！
 
 .row
   .col-12
     = link_to "開始！", start_path, class: "btn btn-primary btn-block"
 
 .row
-  table.table
-    tr.d-flex
-      th.col-2 番号
-      th.col-7 問題
-      th.col-3
-    = render partial: "card", collection: @cards
+  .col-12
+    = paginate @cards
+
+    table.table.table-bordered.table-hover
+      thead
+        tr
+          th.col-8 問題
+          th.col-2 正答率
+          th.col-2
+      tbody
+        = render partial: "card", collection: @cards
+
+    = paginate @cards
 
 .row
   .col-12

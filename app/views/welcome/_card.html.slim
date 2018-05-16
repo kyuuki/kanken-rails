@@ -1,4 +1,7 @@
-tr.d-flex
-  td.col-2 = card.id
-  td.col-7 = card.question
-  td.col-3 = link_to "答え", answer_card_path(card), class: "btn btn-danger"
+tr
+  td.col-8 = card.question
+  td.col-2
+    .text-right.text-muted
+      = number_with_precision(card.correct_answer_rate * 100, precision: 1)
+      | %
+  td.col-2.text-center = link_to "答え", answer_card_path(card), class: "btn btn-danger"
