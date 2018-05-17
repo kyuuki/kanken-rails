@@ -7,6 +7,7 @@ tr
   - else
     td(style="width: word-break: break-all;")
       = link_to client.ip.truncate(30), "http://keiromichi.com/index.php?ip=#{client.ip}", { target: "_blank" }
+  td.text-right = client.log_actions.count
   td = l client.created_at
   - if client.created_at == client.updated_at
     td = l client.updated_at

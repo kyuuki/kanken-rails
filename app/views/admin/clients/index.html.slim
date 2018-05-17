@@ -3,17 +3,30 @@
 
 .box
   .box-header.with-border
+    .pull-left
+      = search_form_for @ransack, url: admin_clients_path, html: { class: "form-inline" } do |f|
+        .form-group
+          = f.search_field :ip_cont, placeholder: "IP アドレス", class: "form-control", size: 20
+        | &nbsp;
+        = f.submit class: "btn btn-default btn-sm"
+        | &nbsp;
+        = link_to "リセット", url_for, class: "btn btn-default btn-sm"
 
-  .box-body.table-responsive.no-padding
+  .box-body.table-responsive
+    = paginate @clients
+
     table.table.table-bordered.table-hover
       thead
         tr
           th(style="width: 10px;") ID
           th User Agent
           th(style="width: 20%") IP
+          th(style="width: 5%") 回答
           th(style="width: 15%") 作成日時
           th(style="width: 15%") 更新日時
       tbody
         == render @clients
+
+    = paginate @clients
 
   .box-footer

@@ -1,6 +1,7 @@
 class Admin::ClientsController < Admin::ApplicationController
   def index
-    @clients = Client.all.order(updated_at: :desc)
+    @ransack = Client.ransack(params[:q])
+    @clients = @ransack.result.order(updated_at: :desc).page(params[:page])
   end
 
   def show
