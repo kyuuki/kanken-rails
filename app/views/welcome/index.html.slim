@@ -24,7 +24,7 @@
 
 .row
   .col-12
-    = paginate @cards
+    = paginate @cards, window: 1
 
     table.table.table-bordered.table-hover
       thead
@@ -35,7 +35,7 @@
       tbody
         = render partial: "card", collection: @cards
 
-    = paginate @cards
+    = paginate @cards, window: 1
 
 .row
   .col-12
