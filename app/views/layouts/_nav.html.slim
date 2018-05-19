@@ -1,0 +1,22 @@
+/ https://getbootstrap.com/docs/4.0/examples/navbars/
+nav.navbar.navbar-expand-lg.fixed-top.navbar-light style="background-color: #e3f2fd;"
+  .container
+    = link_to root_path, { class: "navbar-brand" } do
+      | 漢検 準1級 読み
+
+    button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation"
+      span.navbar-toggler-icon
+
+    .collapse.navbar-collapse id="navbars"
+      ul.navbar-nav.mr-auto
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link href="https://twitter.com/kanken_ja" target="_blank"
+            | Twitter
+        li.nav-item
+          a.nav-link href="http://blog.kanken.akoba.xyz/" target="_blank"
+            | 公式ブログ
+        li.nav-item
+          a.nav-link href="https://goo.gl/forms/vghllwTszoI5e9Vd2" target="_blank"
+            | ご要望・お問い合わせ
+

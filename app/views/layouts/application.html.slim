@@ -39,12 +39,7 @@ html
     link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"
 
   body
-    main.container
-      h1.h3
-        = link_to root_path do
-          img src="/logo.png" alt="漢検 準1級 読み"
-      p.lead.h5.text-muted
-        | 只管、読み問題をこなすサイトです。あまり出題頻度の高くないものを中心に出題します。
+    == render "layouts/nav"
 
     .container
       == yield
