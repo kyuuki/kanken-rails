@@ -3,7 +3,7 @@ h1.h3
   img src="/logo.png" alt="漢検 準1級 読み"
 
 .row.mt-3
-  .col-12
+  .col-12.col-sm-8
     .card
       .card-body
         h2.h4.card-title 本サイトの特長
@@ -22,9 +22,13 @@ h1.h3
             span.text-muted
               | 日々追加中！
 
+  .col-12.col-sm-4.mt-3.mt-sm-1
+    p スポンサーリンク
+    == render "shared/adsense"
+
 .row
   .col-12
-    = link_to "開始！", start_path, class: "btn btn-primary btn-block"
+    = link_to "開始！", start_path, class: "btn btn-primary btn-lg btn-block"
 
 .row
   .col-12
@@ -43,5 +47,5 @@ h1.h3
 
 .row
   .col-12
-    = link_to "開始！", start_path, class: "btn btn-primary btn-block"
+    = link_to "開始！", start_path, class: "btn btn-primary btn-lg btn-block"
 
