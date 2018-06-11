@@ -1,0 +1,25 @@
+- content_for :title
+  | 管理ユーザー一覧
+
+.box
+  .box-header.with-border
+
+  .box-body.table-responsive
+    table.table.table-bordered.table-hover
+      thead
+        tr
+          th.col-sm-2 ID
+          th.col-sm-2 メールアドレス
+          th.col-sm-2 作成問題数
+          th.col-sm-1 2018-04
+          th.col-sm-1 2018-05
+          th.col-sm-1 2018-06
+          th.col-sm-1 2018-07
+          th.col-sm-1 2018-08
+          th.col-sm-1 2018-09
+          th
+      tbody
+        == render @admin_users
+
+  .box-footer
+

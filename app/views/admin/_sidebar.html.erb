@@ -27,7 +27,11 @@
       </span>
     </a>
     <ul class="treeview-menu">
-      <li><a href="#">管理ユーザー</a></li>
+      <li>
+        <%= link_to admin_admin_users_path do %>
+          管理ユーザー
+        <% end %>
+      </li>
     </ul>
   </li>
 </ul>

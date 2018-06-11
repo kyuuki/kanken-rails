@@ -20,5 +20,6 @@ Rails.application.routes.draw do
     root to: 'welcome#index'
     resources :cards
     resources :clients
+    resources :admin_users, only: [ :index ]
   end
 end
