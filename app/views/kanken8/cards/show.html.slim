@@ -1,0 +1,42 @@
+- content_for :page_title
+  | 問題 「#{@card.question}」
+
+.row
+  .col-12
+    h2.h4.my-3 問題
+
+    .card
+      .card-body
+        .text-right.text-muted
+          | 正答率:&nbsp;
+          = number_with_precision(@card.correct_answer_rate * 100, precision: 1)
+          | %
+        h3.card-title
+          = @card.question
+
+.row
+  .col-12
+    .card
+      .card-header
+        | あなたの結果 （新 ←→ 古）
+
+      .card-body
+        - if @latest_log_actions.size == 0
+          .text-muted （まだ結果がありません）
+        - else
+          - @latest_log_actions.each do |log_action|
+            - if log_action.action == LogAction::ACTION_OK
+              | ○
+            - elsif log_action.action == LogAction::ACTION_NG
+              | ×
+
+//.row
+  .col-12
+    p スポンサーリンク
+    == render "shared/adsense"
+
+.row
+  .col-12
+    = link_to "答え", answer_card_path(@card), class: "btn btn-danger btn-block"
+
+

@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: kanken_development
+  database: kanken_8_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -82,7 +82,7 @@ test:
 #
 production:
   <<: *default
-  database: kanken_production
+  database: kanken_8_production
   username: kanken_production
   #password: <%= ENV['KANKEN-RAILS_DATABASE_PASSWORD'] %>
   password: <%= Rails.application.secrets[:database][:password] %>

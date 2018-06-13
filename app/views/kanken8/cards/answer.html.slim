@@ -1,0 +1,34 @@
+- content_for :page_title
+  | 答え 「#{@card.question}」
+
+.row
+  .col-12
+    h2.h4.my-3 答え
+
+    .card
+      .card-body
+        .text-right.text-muted
+          | 正答率:&nbsp;
+          = number_with_precision(@card.correct_answer_rate * 100, precision: 1)
+          | %
+        h3.card-title.text-danger
+          = @card.answer
+        .card-subtitle.mb-2.text-muted
+          = @card.question
+      .card-footer
+        = @card.comment.html_safe
+
+//.row
+  .col-12
+    p スポンサーリンク
+    == render "shared/adsense"
+
+.row
+  .col-12
+    = link_to "次の問題", action_card_path(@card), class: "btn btn-primary btn-block"
+
+.row
+  .col-6
+    = link_to "間違えた…", action_card_path(@card, { act: LogAction::ACTION_NG }), class: "btn btn-warning btn-block"
+  .col-6
+    = link_to "正解した！", action_card_path(@card, { act: LogAction::ACTION_OK }), class: "btn btn-success btn-block"

@@ -1,0 +1,50 @@
+h1.h3
+  = link_to root_path do
+  | 漢検 8 級 読み
+
+.row.mt-3
+  .col-12.col-sm-8
+    .card
+      .card-body
+        h2.h4.card-title このサイトについて
+        ul
+          li 漢検 8 級の読み問題をたくさん出します！
+          li
+            | まちがった問題は 3 問あとにまた出るので &nbsp;
+            span.text-primary きちんと覚えましょう！
+          li 答えのページに漢字のイメージが書いてあります。
+        ul
+          li
+            span.h5.text-danger
+              = "問題の数 #{Card.count} 問"
+              | &nbsp;
+            span.text-muted
+              | 増えていきます！
+
+  //.col-12.col-sm-4.mt-3.mt-sm-1
+    p スポンサーリンク
+    == render "shared/adsense"
+
+.row
+  .col-12
+    = link_to "はじめ！", start_path, class: "btn btn-primary btn-lg btn-block"
+
+.row
+  .col-12
+    = paginate @cards, window: 1
+
+    table.table.table-bordered.table-hover
+      thead
+        tr
+          th.col-8 問題
+          th.col-2 正答率
+          th.col-2
+      tbody
+        = render partial: "card", collection: @cards
+
+    = paginate @cards, window: 1
+
+.row
+  .col-12
+    = link_to "まじめ！", start_path, class: "btn btn-primary btn-lg btn-block"
+

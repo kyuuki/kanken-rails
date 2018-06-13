@@ -1,0 +1,66 @@
+doctype html
+html
+  head
+    == render "shared/analytics"
+
+    meta charset="UTF-8"
+    meta http-equiv="X-UA-Compatibile" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    meta name="msvalidate.01" content="DB2FEB698963086AA84FECF12C1A340B"
+
+    ruby:
+      set_meta_tags({
+        site: "漢検 8 級 読み",
+        title: yield(:page_title),
+        reverse: true,
+        description: "只管、漢検準1級の読み問題を出題します。あまり出題頻度の高くないものを中心に出題します。漢検準1級の読みは日本語で書かれた少し難しい文章（明治の文豪の小説など）を読むために必要な知識となります。意味も含めて覚えていきましょう。間違った問題を繰り返し解くことで、漢字の読みを覚えていきます。",
+        keywords: [ "漢検", "漢字検定" "準一級", "準1級", "読み", "読み問題", "干支" ],
+        canonical: request.original_url,
+        og: {
+          title: :title,
+          type: "website",
+          url: request.original_url,
+          image: "http://kanjino-terakoya.com/wp-content/uploads/2017/06/yoko2_c.png",
+          site_name: :site,
+        },
+        twitter: {
+          card: "summary",
+          site: "@kanken_jp",
+          image: "http://kanjino-terakoya.com/wp-content/uploads/2017/06/yoko2_c.png",
+        },
+      })
+    = display_meta_tags
+
+    = csrf_meta_tags
+
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+
+    link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"
+
+  body
+    == render "layouts/kanken_8_nav"
+
+    .container
+      == yield
+
+    footer.my-5.pt-5.text-muted.text-center.text-small
+      p.mb-1
+        | &copy; 2018 漢検 8 級 読み
+      ul.list-inline
+        li.list-inline-item
+          a href="/" トップページ
+        | | 
+        li.list-inline-item
+          a href="https://twitter.com/kanken_ja" target="_blank" Twitter
+        | | 
+        li.list-inline-item
+          a href="http://blog.kanken.akoba.xyz/" target="_blank" 公式ブログ
+        | | 
+        li.list-inline-item
+          a href="https://goo.gl/forms/vghllwTszoI5e9Vd2" target="_blank" お問い合わせ
+
+    script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"
+    script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"
+
