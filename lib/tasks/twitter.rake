@@ -16,7 +16,7 @@ namespace :twitter do
       end
 
       card = Card.offset(rand(Card.count)).first
-      client.update("「#{card.question}」正解率 #{(card.correct_answer_rate * 100).round(1)}% 答え → http://kanken.akoba.xyz#{Rails.application.routes.url_helpers.answer_card_path(card)} #漢検 #漢字検定 #漢字")
+      client.update("「#{card.question}」正解率 #{(card.correct_answer_rate * 100).round(1)}% 答え → http://kanken8.akoba.xyz#{Rails.application.routes.url_helpers.answer_card_path(card)} #漢検 #漢字検定 #漢字")
     rescue => exception
       Rails.logger.fatal "Task twitter:post failed."
       Rails.logger.info exception.message
