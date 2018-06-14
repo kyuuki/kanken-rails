@@ -1,0 +1,47 @@
+= form_for [ :admin, app ], html: { class: "form-horizontal" } do |form|
+
+  .box
+    .box-header.with-border
+      h3.box-title アプリ
+
+    .box-body
+      .form-group
+        = form.label :name, "", class: "col-sm-2 control-label"
+        .col-sm-5
+          = form.text_field :name, class: "form-control"
+      .form-group
+        = form.label :identifier, "", class: "col-sm-2 control-label"
+        .col-sm-5
+          = form.text_field :identifier, class: "form-control"
+      .form-group
+        = form.label :url, "", class: "col-sm-2 control-label"
+        .col-sm-5
+          = form.text_field :url, class: "form-control"
+
+      = form.fields_for :app_twitter_setting do |form_fields|
+        .form-group
+          = form_fields.label :consumer_key, "", class: "col-sm-2 control-label"
+          .col-sm-5
+            = form_fields.text_field :consumer_key, class: "form-control"
+        .form-group
+          = form_fields.label :consumer_secret, "", class: "col-sm-2 control-label"
+          .col-sm-5
+            = form_fields.text_field :consumer_secret, class: "form-control"
+        .form-group
+          = form_fields.label :access_token, "", class: "col-sm-2 control-label"
+          .col-sm-5
+            = form_fields.text_field :access_token, class: "form-control"
+        .form-group
+          = form_fields.label :access_token_secret, "", class: "col-sm-2 control-label"
+          .col-sm-5
+            = form_fields.text_field :access_token_secret, class: "form-control"
+        .form-group
+          = form_fields.label :message, "", class: "col-sm-2 control-label"
+          .col-sm-5
+            = form_fields.text_field :message, class: "form-control"
+
+    .box-footer
+      .form-group
+        .col-sm-offset-2.col-sm-5
+          = form.submit class: "btn btn-info btn-sm"
+

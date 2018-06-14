@@ -23,16 +23,16 @@ default: &default
 
 development:
   <<: *default
-  database: kanken_development
+  database: card_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: kanken
+  username: rails
 
   # The password associated with the postgres role (username).
-  password: kanken
+  password: rails
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -57,9 +57,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: kanken_test
-  username: kanken
-  password: kanken
+  database: card_test
+  username: rails
+  password: rails
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -82,7 +82,7 @@ test:
 #
 production:
   <<: *default
-  database: kanken_production
-  username: kanken_production
+  database: card_production
+  username: card
   #password: <%= ENV['KANKEN-RAILS_DATABASE_PASSWORD'] %>
   password: <%= Rails.application.secrets[:database][:password] %>

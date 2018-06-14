@@ -2,6 +2,15 @@
 <ul class="sidebar-menu" data-widget="tree">
   <li class="header">メイン</li>
   <!-- Optionally, you can add icons to the links -->
+  <% if request.path_info == admin_apps_path %>
+    <li class="active">
+  <% else %>
+    <li>
+  <% end %>
+    <%= link_to admin_apps_path do %>
+      <i class="fa fa-link"></i> <span>アプリ一覧</span>
+    <% end %>
+  </li>
   <% if request.path_info == admin_cards_path %>
     <li class="active">
   <% else %>

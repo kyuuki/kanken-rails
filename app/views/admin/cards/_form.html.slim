@@ -6,6 +6,10 @@
 
     .box-body
       .form-group
+        = form.label :app_id, class: "col-sm-2 control-label"
+        .col-sm-5
+          = form.collection_select :app_id, App.all, :id, :name, {}, { class: "form-control" }
+      .form-group
         = form.label :question, "", class: "col-sm-2 control-label"
         .col-sm-5
           = form.text_field :question, class: "form-control"

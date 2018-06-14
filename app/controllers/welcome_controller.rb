@@ -3,6 +3,8 @@ class WelcomeController < ApplicationController
     @ransack = Card.ransack(params[:q])
     @ransack.sorts = "id DESC"
     @cards = @ransack.result.page(params[:page]).per(10)
+
+    render plain: "What we can not speak about we pass over in silence."
   end
 
   def start

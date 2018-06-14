@@ -1,0 +1,27 @@
+- content_for :title
+  | アプリ一覧
+
+.box
+  .box-header.with-border
+    .pull-right
+      = link_to new_admin_app_path, { class: "btn btn-default btn-sm" } do
+        i.fa.fa-plus
+        | &nbsp; 新規作成
+
+  .box-body.table-responsive
+    table.table.table-bordered.table-hover
+      thead
+        tr
+          th.col-sm-1 ID
+          th.col-sm-2 名前
+          th.col-sm-2 識別子
+          th.col-sm-2 URL
+          th.col-sm-2
+      tbody
+        == render @apps
+
+  .box-footer
+    .pull-right
+      = link_to new_admin_app_path, { class: "btn btn-default btn-sm" } do
+        i.fa.fa-plus
+        | &nbsp; 新規作成

@@ -1,0 +1,23 @@
+bh1.h3
+  = link_to root_path do
+    = @app.name
+
+.row.mt-3
+  .col-12.col-sm-8
+    .card
+      .card-body
+        h2.h4.card-title 本サイトの特長
+        ul
+          li 問題を次から次へとひたすら出し続けます
+          li 答えのページに記憶の定着に役に立ちそうな情報を表示しています。
+        ul
+          li
+            span.h5.text-danger
+              = "総問題数 #{@app.cards.count} 問"
+              | &nbsp;
+            span.text-muted
+              | 日々追加中！
+
+.row
+  .col-12
+    = link_to "開始！", app_start_path(@app), class: "btn btn-primary btn-lg btn-block"

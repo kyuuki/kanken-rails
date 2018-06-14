@@ -1,0 +1,10 @@
+tr
+  td
+    = link_to app.id, admin_app_path(app), class: "btn btn-default btn-xs"
+  td = app.name
+  td = app.identifier
+  td = app.url
+  td.text-right
+    = link_to "編集", edit_admin_app_path(app), { class: "btn btn-default btn-sm" }
+    | &nbsp;
+    = link_to "削除", [ :admin, app ], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm"

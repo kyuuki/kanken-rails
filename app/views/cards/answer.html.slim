@@ -18,17 +18,17 @@
       .card-footer
         = @card.comment.html_safe
 
-.row
+/.row
   .col-12
     p スポンサーリンク
     == render "shared/adsense"
 
 .row
   .col-12
-    = link_to "次の問題", action_card_path(@card), class: "btn btn-primary btn-block"
+    = link_to "次の問題", action_app_card_path(@app, @card), class: "btn btn-primary btn-block"
 
 .row
   .col-6
-    = link_to "間違えた…", action_card_path(@card, { act: LogAction::ACTION_NG }), class: "btn btn-warning btn-block"
+    = link_to "間違えた…", action_app_card_path(@app, @card, { act: LogAction::ACTION_NG }), class: "btn btn-warning btn-block"
   .col-6
-    = link_to "正解した！", action_card_path(@card, { act: LogAction::ACTION_OK }), class: "btn btn-success btn-block"
+    = link_to "正解した！", action_app_card_path(@app, @card, { act: LogAction::ACTION_OK }), class: "btn btn-success btn-block"

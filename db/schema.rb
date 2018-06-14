@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403080138) do
+ActiveRecord::Schema.define(version: 20180614121445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,26 @@ ActiveRecord::Schema.define(version: 20180403080138) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "app_twitter_settings", force: :cascade do |t|
+    t.bigint "app_id"
+    t.string "consumer_key"
+    t.string "consumer_secret"
+    t.string "access_token"
+    t.string "access_token_secret"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["app_id"], name: "index_app_twitter_settings_on_app_id"
+  end
+
+  create_table "apps", force: :cascade do |t|
+    t.string "name"
+    t.string "identifier"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "card_owners", force: :cascade do |t|
     t.bigint "card_id"
     t.bigint "admin_user_id"
@@ -47,6 +67,8 @@ ActiveRecord::Schema.define(version: 20180403080138) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "app_id"
+    t.index ["app_id"], name: "index_cards_on_app_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -67,8 +89,10 @@ ActiveRecord::Schema.define(version: 20180403080138) do
     t.index ["client_id"], name: "index_log_actions_on_client_id"
   end
 
+  add_foreign_key "app_twitter_settings", "apps"
   add_foreign_key "card_owners", "admin_users"
   add_foreign_key "card_owners", "cards"
+  add_foreign_key "cards", "apps"
   add_foreign_key "log_actions", "cards"
   add_foreign_key "log_actions", "clients"
 end

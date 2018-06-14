@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  app: one
+  consumer_key: MyString
+  consumer_secret: MyString
+  access_token: MyString
+  access_token_secret: MyString
+  message: MyText
+
+two:
+  app: two
+  consumer_key: MyString
+  consumer_secret: MyString
+  access_token: MyString
+  access_token_secret: MyString
+  message: MyText

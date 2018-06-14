@@ -63,6 +63,6 @@ class Admin::CardsController < Admin::ApplicationController
 
   private
     def card_params
-      params.require(:card).permit(:question, :answer, :comment)
+      params.require(:card).permit(:app_id, :question, :answer, :comment)
     end
 end

@@ -2,9 +2,10 @@ tr
   td
     = link_to card.id, admin_card_path(card), class: "btn btn-default btn-xs"
     | &nbsp;
-    = link_to "問", card, class: "btn btn-default btn-xs"
+    /= link_to "問", card, class: "btn btn-default btn-xs"
     | &nbsp;
-    = link_to "答", answer_card_path(card), class: "btn btn-default btn-xs"
+    /= link_to "答", answer_card_path(card), class: "btn btn-default btn-xs"
+  td = card.app.name
   td = card.question
   td = card.answer
   td = card.comment.truncate(30)

@@ -1,4 +1,5 @@
 class Card < ApplicationRecord
+  belongs_to :app
   has_many :log_actions
   has_one :card_owner
 

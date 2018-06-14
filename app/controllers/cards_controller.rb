@@ -1,11 +1,17 @@
 class CardsController < ApplicationController
   def show
+    @app = App.find(params[:app_id])
     @card = Card.find(params[:id])
 
     @latest_log_actions = LogAction.where(client: @client, card: @card).where.not(action: nil).order(id: :desc).limit(10)
+
+    #if not params[:app_id].nil?
+    #  render "#{@app.identifier}/cards/show", layout: "#{@app.identifier}"
+    #end
   end
 
   def answer
+    @app = App.find(params[:app_id])
     @card = Card.find(params[:id])
 
     # 解答表示ログ記録
@@ -15,6 +21,7 @@ class CardsController < ApplicationController
   end
 
   def action
+    @app = App.find(params[:app_id])
     card = Card.find(params[:id])
 
     # アクションログ記録
@@ -29,6 +36,6 @@ class CardsController < ApplicationController
     # 次のカードを決める
     next_card = @client.get_next_card(card)
 
-    redirect_to next_card
+    redirect_to app_card_path(@app, next_card)
   end
 end
