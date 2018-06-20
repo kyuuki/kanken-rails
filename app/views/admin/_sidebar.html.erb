@@ -1,5 +1,8 @@
 <!-- Sidebar Menu -->
 <ul class="sidebar-menu" data-widget="tree">
+
+  <% if admin_user_signed_in? %>
+
   <li class="header">メイン</li>
   <!-- Optionally, you can add icons to the links -->
   <% if request.path_info == admin_apps_path %>
@@ -43,5 +46,8 @@
       </li>
     </ul>
   </li>
+
+  <% end %><%# if admin_user_signed_in? %>
+
 </ul>
 <!-- /.sidebar-menu -->

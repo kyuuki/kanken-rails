@@ -1,8 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_client
+  layout :layout_by_resource
 
   private
+
+  def layout_by_resource
+    if devise_controller?
+      "admin"
+    else
+      "application"
+    end
+  end
 
   def current_client
     client_id = get_client_id_from_cookies
