@@ -1,5 +1,6 @@
 class Card < ApplicationRecord
   has_many :log_actions
+  has_many :client_card_results
   has_one :card_owner
 
   def count_action_ok
@@ -20,5 +21,15 @@ class Card < ApplicationRecord
 
     # どっちがか float なら結果も float
     return count_action_ok / (count_action_ok + count_action_ng).to_f
+  end
+
+  # TODO: あとで効率化
+  def correct_answer_rate_by_client(client)
+    result = ClientCardResult.find_by(client: client, card: self)
+    if result.nil?
+      return nil
+    else
+      return result.rate_ok
+    end
   end
 end

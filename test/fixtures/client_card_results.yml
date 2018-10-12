@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  card: one
+  count_ok: 1
+  count_ng: 1
+  rate_ok: 1.5
+  last_ok_at: 2018-10-12 07:13:45
+  point_weak: 1
+
+two:
+  client: two
+  card: two
+  count_ok: 1
+  count_ng: 1
+  rate_ok: 1.5
+  last_ok_at: 2018-10-12 07:13:45
+  point_weak: 1

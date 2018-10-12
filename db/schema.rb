@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403080138) do
+ActiveRecord::Schema.define(version: 20181012071345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,20 @@ ActiveRecord::Schema.define(version: 20180403080138) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "client_card_results", force: :cascade do |t|
+    t.bigint "client_id"
+    t.bigint "card_id"
+    t.integer "count_ok", default: 0, null: false
+    t.integer "count_ng", default: 0, null: false
+    t.float "rate_ok", default: 0.0, null: false
+    t.datetime "last_ok_at"
+    t.integer "point_weak", default: 50, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_client_card_results_on_card_id"
+    t.index ["client_id"], name: "index_client_card_results_on_client_id"
+  end
+
   create_table "clients", force: :cascade do |t|
     t.string "user_agent"
     t.string "ip"
@@ -69,6 +83,8 @@ ActiveRecord::Schema.define(version: 20180403080138) do
 
   add_foreign_key "card_owners", "admin_users"
   add_foreign_key "card_owners", "cards"
+  add_foreign_key "client_card_results", "cards"
+  add_foreign_key "client_card_results", "clients"
   add_foreign_key "log_actions", "cards"
   add_foreign_key "log_actions", "clients"
 end

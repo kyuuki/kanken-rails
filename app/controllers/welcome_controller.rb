@@ -1,8 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @ransack = Card.ransack(params[:q])
-    @ransack.sorts = "id DESC"
-    @cards = @ransack.result.page(params[:page]).per(10)
+    @cards = Card.order(id: :desc).page(params[:page]).per(10)
   end
 
   def start

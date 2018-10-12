@@ -32,6 +32,22 @@
 
 .box
   .box-header.with-border
+    h3.h4 結果
+
+  .box-body.table-responsive.no-padding
+    table.table.table-bordered.table-hover
+      thead
+        tr
+          th.col-sm-4 colspan=2 カード
+          th.col-sm-1 正解数
+          th.col-sm-1 不正解数
+          th.col-sm-1 正答率
+          th.col-sm-2 最終正解日時
+      tbody
+        == render partial: "result", collection: @client.client_card_results.order(:card_id)
+
+.box
+  .box-header.with-border
     h3.h4 アクションログ
 
   .box-body.table-responsive.no-padding

@@ -39,9 +39,12 @@ h1.h3
     table.table.table-bordered.table-hover
       thead
         tr
-          th.col-8 問題
-          th.col-2 正答率
-          th.col-2
+          th rowspan=2 問題
+          th colspan=2 正答率
+          th rowspan=2
+        tr
+          th あなた
+          th みんな
       tbody
         = render partial: "card", collection: @cards
 

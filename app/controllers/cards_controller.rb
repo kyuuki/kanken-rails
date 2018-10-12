@@ -26,6 +26,9 @@ class CardsController < ApplicationController
       end
     end
 
+    # クライアントのカード毎の結果を記録
+    ClientCardResult.update(@client, card)
+
     # 次のカードを決める
     next_card = @client.get_next_card(card)
 

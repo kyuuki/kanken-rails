@@ -1,7 +1,14 @@
 tr
-  td.col-8 = card.question
-  td.col-2
+  td = card.question
+  td
+   .text-right.text-muted
+      - if card.correct_answer_rate_by_client(@client).nil?
+        | -
+      - else
+        = number_with_precision(card.correct_answer_rate_by_client(@client) * 100, precision: 1)
+        | %
+  td
     .text-right.text-muted
       = number_with_precision(card.correct_answer_rate * 100, precision: 1)
       | %
-  td.col-2.text-center = link_to "答え", answer_card_path(card), class: "btn btn-danger"
+  td.text-center = link_to "答え", answer_card_path(card), class: "btn btn-danger"

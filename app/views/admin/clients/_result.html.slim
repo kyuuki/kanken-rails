@@ -1,0 +1,10 @@
+tr
+  td = link_to result.card.id, admin_card_path(result.card)
+  td = result.card.question
+  td = result.count_ok
+  td = result.count_ng
+  td
+    = (result.rate_ok * 100).round(2)
+    | %
+  td = l result.last_ok_at if not result.last_ok_at.nil?
+
