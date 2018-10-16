@@ -8,15 +8,21 @@
     table.table.table-bordered.table-hover
       thead
         tr
-          th.col-sm-2 ID
-          th.col-sm-2 メールアドレス
-          th.col-sm-2 作成問題数
-          th.col-sm-1 2018-04
-          th.col-sm-1 2018-05
-          th.col-sm-1 2018-06
-          th.col-sm-1 2018-07
-          th.col-sm-1 2018-08
-          th.col-sm-1 2018-09
+          th.col-sm-1 rowspan=2 ID
+          th.col-sm-2 rowspan=2 メールアドレス
+          th.col-sm-1 rowspan=2 作成問題数
+          th colspan=9 2018
+          th
+        tr
+          th 04
+          th 05
+          th 06
+          th 07
+          th 08
+          th 09
+          th 10
+          th 11
+          th 12
           th
       tbody
         == render @admin_users
