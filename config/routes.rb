@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'start', to: 'welcome#start'
 
-  resources :cards, only: [ :show ] do
+  resources :cards, only: [:show] do
     member do
       get 'answer'
       get 'action'
@@ -14,12 +14,17 @@ Rails.application.routes.draw do
   # 管理画面
 
   # https://www.tmp1024.com/programming/post-4661
-  devise_for :admin_users, path: 'admin/users'
+  devise_for :admin_users,
+             path: 'admin',
+             only: [:sign_in, :sign_out, :session],
+             controllers: {
+               sessions: 'admin_users/sessions'
+             }
 
   namespace 'admin' do
     root to: 'welcome#index'
     resources :cards
     resources :clients
-    resources :admin_users, only: [ :index ]
+    resources :admin_users, only: [:index]
   end
 end
