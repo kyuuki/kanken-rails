@@ -1,7 +1,7 @@
 class Card < ApplicationRecord
-  has_many :log_actions
-  has_many :client_card_results
-  has_one :card_owner
+  has_many :log_actions, dependent: :destroy
+  has_many :client_card_results, dependent: :destroy
+  has_one :card_owner, dependent: :destroy
 
   def count_action_ok
     # 1 はなんとかせな

@@ -25,7 +25,7 @@ class Admin::CardsController < Admin::ApplicationController
       if @card.save
         CardOwner.create(card: @card, admin_user: current_admin_user)  # TODO: トランザクションできちんと
 
-        SlackNotifier.notify("漢検問題追加: #{@card.question}")
+        SlackNotifier.notify("漢検問題追加 - #{@card.id}: #{@card.question}")
 
         format.html { redirect_to admin_cards_url, notice: 'Card was successfully created.' }
         format.json { render :show, status: :created, location: @card }
@@ -41,7 +41,7 @@ class Admin::CardsController < Admin::ApplicationController
 
     respond_to do |format|
       if @card.update(card_params)
-        SlackNotifier.notify("漢検問題更新: #{@card.question}")
+        SlackNotifier.notify("漢検問題更新 - #{@card.id}: #{@card.question}")
 
         format.html { redirect_to admin_cards_url, notice: 'Card was successfully updated.' }
         format.json { render :show, status: :ok, location: @card }
@@ -56,6 +56,7 @@ class Admin::CardsController < Admin::ApplicationController
     @card = Card.find(params[:id])
 
     @card.destroy
+    SlackNotifier.notify("漢検問題削除 - #{@card.id}: #{@card.question}")
     respond_to do |format|
       format.html { redirect_to admin_cards_url, notice: 'Card was successfully destroyed.' }
       format.json { head :no_content }
