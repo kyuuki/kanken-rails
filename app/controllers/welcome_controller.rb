@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @cards = Card.order(id: :desc).page(params[:page]).per(10)
+    @cards = Card.order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   def start
