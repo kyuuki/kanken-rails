@@ -2,7 +2,7 @@
 nav.navbar.navbar-expand-lg.fixed-top.navbar-light style="background-color: #e3f2fd;"
   .container
     = link_to root_path, { class: "navbar-brand" } do
-      | 漢検 準1級 読み
+      = t :app_name
 
     button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation"
       span.navbar-toggler-icon
