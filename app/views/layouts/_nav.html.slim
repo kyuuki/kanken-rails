@@ -1,8 +1,8 @@
 / https://getbootstrap.com/docs/4.0/examples/navbars/
-nav.navbar.navbar-expand-lg.fixed-top.navbar-light style="background-color: #e3f2fd;"
+nav.navbar.navbar-expand-lg.fixed-top.navbar-light style="background-color: #e7eff8;"
   .container
     = link_to root_path, { class: "navbar-brand" } do
-      | 漢検 準1級 読み
+      img  src="/header_logo.png" alt="#{t :app_name}" height="50px"
 
     button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation"
       span.navbar-toggler-icon
