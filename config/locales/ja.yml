@@ -1,5 +1,6 @@
----
 ja:
+  app_name: 只管！漢検読み問題（準1級）
+
   activerecord:
     errors:
       messages:
