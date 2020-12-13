@@ -2,14 +2,8 @@ tr
   td = admin_user.id
   td = admin_user.email
   td = admin_user.card_owners.count
-  td = admin_user.count_card_owners_created_in_year_month(2018, 4)
-  td = admin_user.count_card_owners_created_in_year_month(2018, 5)
-  td = admin_user.count_card_owners_created_in_year_month(2018, 6)
-  td = admin_user.count_card_owners_created_in_year_month(2018, 7)
-  td = admin_user.count_card_owners_created_in_year_month(2018, 8)
-  td = admin_user.count_card_owners_created_in_year_month(2018, 9)
-  td = admin_user.count_card_owners_created_in_year_month(2018, 10)
-  td = admin_user.count_card_owners_created_in_year_month(2018, 11)
-  td = admin_user.count_card_owners_created_in_year_month(2018, 12)
+  - year = Time.zone.now.year
+  - (1..12).each do |month|
+    td = admin_user.count_card_owners_created_in_year_month(year, month)
   td = l admin_user.last_sign_in_at
 
