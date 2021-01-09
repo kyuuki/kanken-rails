@@ -1,0 +1,21 @@
+.row.mt-3
+  .col-12
+    h2.h4.my-3 ログイン
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+
+      .form-group
+        = f.label :email, "メールアドレス", class: "col-sm-3 control-label"
+        .col-sm-5
+          = f.email_field :email, required: true, placeholder: "xxx@sample.com", class: "form-control", autofocus: true, autocomplete: "email"
+
+      .form-group
+        = f.label :password, "パスワード", class: "col-sm-3 control-label"
+        .col-sm-3
+          = f.password_field :password, required: true, placeholder: "xxxxxx（6 文字以上）", class: "form-control", autocomplete: "current-password"
+
+      .form-group
+        .col-sm-offset-3.col-sm-3
+          = f.submit "ログイン", class: "btn btn-primary"
+
+    = render "users/shared/links"

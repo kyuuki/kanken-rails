@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     end
   end
 
+  devise_for :users,
+             controllers: {
+               sessions: 'users/sessions',
+               registrations: 'users/registrations'
+             }
+
   # 管理画面
 
   # https://www.tmp1024.com/programming/post-4661
