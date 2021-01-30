@@ -14,6 +14,7 @@ ja:
       user:
         email: メールアドレス
         password: パスワード
+        password_confirmation: パスワード（確認入力）
         remember_me: 次回から自動的にログイン
 
   date:
