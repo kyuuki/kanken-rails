@@ -4,7 +4,22 @@ class ApplicationController < ActionController::Base
 
   private
 
+  #
+  # 汚いけど、今はユーザーベースというよりクライアントベース
+  #
+  # 1 つのクライアントを複数のユーザーでログインもありうる (Cookie をクリアしないなど)
+  #
   def current_client
+    # ログインしていたらそこからクライアントを特定 (ここだけユーザーに依存)
+    if user_signed_in?
+      if current_user.clients.count > 0
+        # 現状、新規登録完了時にだけ結びつけてるので、1 ユーザーに複数のクライアントは登録されてないはず (逆はある)
+        return current_user.clients.first
+      end
+    end
+    
+    # TODO: 将来的には複数のクライアントでのログインを検知したい
+    
     client_id = get_client_id_from_cookies
 
     client = nil

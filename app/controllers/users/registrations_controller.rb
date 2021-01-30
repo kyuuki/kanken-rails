@@ -10,9 +10,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+
+    # ユーザー登録後にクライアントと結びつける
+    # (現状、1 クライアントに複数のユーザーが紐付く可能性大)
+    UserClient.create(user: current_user, client: current_client)
+  end
 
   # GET /resource/edit
   # def edit

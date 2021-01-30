@@ -2,6 +2,9 @@ class Client < ApplicationRecord
   has_many :log_actions
   has_many :client_card_results
 
+  has_many :user_clients
+  has_many :users, through: :user_clients
+
   def self.new_from_request(request)
     # http://kyamada.hatenablog.com/entry/2012/09/21/195603
     # https://qiita.com/ledsun/items/c947b453ba97661afcef
