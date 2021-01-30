@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   namespace 'admin' do
     root to: 'welcome#index'
     resources :cards
+    resources :users
     resources :clients
     resources :admin_users, only: [:index]
   end
