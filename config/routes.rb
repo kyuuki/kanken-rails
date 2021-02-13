@@ -34,4 +34,7 @@ Rails.application.routes.draw do
     resources :clients
     resources :admin_users, only: [:index]
   end
+
+  # https://github.com/fgrehm/letter_opener_web
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

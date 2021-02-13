@@ -68,3 +68,9 @@ gem 'twitter'
 
 # 通知
 gem 'slack-notifier'
+
+# メール
+group :development do
+  gem "letter_opener"
+  gem 'letter_opener_web'
+end
