@@ -1,0 +1,17 @@
+.row.mt-3
+  .col-12
+    h2.h4.my-3 パスワード再設定
+
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = render "users/shared/error_messages", resource: resource
+
+      .form-group
+        = f.label :email, "メールアドレス", class: "col-sm-3 control-label"
+        .col-sm-5
+          = f.email_field :email, required: true, placeholder: "xxx@sample.com", class: "form-control", autofocus: true, autocomplete: "email"
+
+      .form-group
+        .col-sm-offset-3.col-sm-3
+          = f.submit "再設定", class: "btn btn-primary"
+
+    = render "users/shared/links"
