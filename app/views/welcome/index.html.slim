@@ -30,6 +30,19 @@
 
 .row
   .col-12
+    .alert.alert-danger
+      h2.h5 ユーザー登録のお願い
+      p
+        | 近々、本サイトの URL が変更になります。URL 変更に伴い、これまでの Cookie を利用した 
+        strong 回答記録がリセットされてしまいます。
+        | 回答記録を残しておきたい方は、事前に 画面右上より
+        = link_to new_user_registration_path do
+          | ユーザー登録 
+        | をお願いいたします。ユーザー登録を行うことで、URL 変更後も回答記録がそのまま保持されます。
+      p お手数をおかけしますがよろしくお願いいたします。
+
+.row
+  .col-12
     = link_to "開始！", start_path, class: "btn btn-primary btn-lg btn-block"
 
 .row
