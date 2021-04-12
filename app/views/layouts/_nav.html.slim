@@ -13,7 +13,7 @@ nav.navbar.navbar-expand-lg.fixed-top.navbar-light style="background-color: #e7e
           a.nav-link href="https://twitter.com/kanken_ja" target="_blank"
             | Twitter
         li.nav-item
-          a.nav-link href="http://blog.kanken.akoba.xyz/" target="_blank"
+          a.nav-link href="#{Rails.configuration.blog_url}" target="_blank"
             | 公式ブログ
       ul.navbar-nav
         - if user_signed_in?

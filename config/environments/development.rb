@@ -1,5 +1,10 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.host = "rails-dev.akoba.xyz"
+  config.port = 3000
+  config.url = "http://#{config.host}:#{config.port}"
+  #config.blog_url = "https://blog.kanken-j1.fkoba.com"
+  config.blog_url = "https://blog.kanken.akoba.xyz"
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -31,7 +36,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: config.host, port: config.port }
 
   # https://github.com/ryanb/letter_opener
   config.action_mailer.delivery_method = :letter_opener

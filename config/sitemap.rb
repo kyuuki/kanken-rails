@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://kanken.akoba.xyz/"
+SitemapGenerator::Sitemap.default_host = Rails.configuration.url
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.

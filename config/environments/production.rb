@@ -1,5 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.host = "kanken-j1.fkoba.com"
+  config.url = "https://#{config.host}"
+  #config.blog_url = "https://blog.#{config.host}}"
+  config.blog_url = "https://blog.kanken.akoba.xyz"
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -67,12 +71,12 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.default_url_options = { host: 'kanken.akoba.xyz', protocol: "https" }
+  config.action_mailer.default_url_options = { host: config.host, protocol: "https" }
   
   config.action_mailer.smtp_settings = {
     :user_name => 'apikey',
     :password => ENV['SENDGRID_API_KEY'],
-    :domain => 'kanken.akoba.xyz',
+    :domain => config.host,
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,

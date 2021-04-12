@@ -21,7 +21,7 @@ namespace :twitter do
       else
         card = Card.find(args.card_id.to_i)
       end
-      client.update("「#{card.question}」正解率 #{(card.correct_answer_rate * 100).round(1)}% 答え → http://kanken.akoba.xyz#{Rails.application.routes.url_helpers.answer_card_path(card)} #漢検")
+      client.update("「#{card.question}」正解率 #{(card.correct_answer_rate * 100).round(1)}% 答え → #{Rails.configuration.url}#{Rails.application.routes.url_helpers.answer_card_path(card)} #漢検")
     rescue => exception
       Rails.logger.fatal "Task twitter:post failed."
       Rails.logger.info exception.message
