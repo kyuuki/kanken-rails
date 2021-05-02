@@ -5,6 +5,17 @@
   img src="/logo.png" alt="漢検 準1級 読み"
 
 .row.mt-4
+  .col-12
+    .alert.alert-danger.alert-dismissible.fade.show role="alert"
+      h2.h5 URL 変更のお知らせ
+      p
+        | 本サイトの URL が https://kanken-j1.fkoba.com/ に変更になりました。
+        br
+        | ブックマークなどをご利用の方はご対応のほどよろしくお願いいたします。
+      button.close type="button" data-dismiss="alert" aria-label="Close"
+        span aria-hidden="true" &times;
+
+.row
   .col-12.col-sm-8
     .card
       .card-body
@@ -27,19 +38,6 @@
   .col-12.col-sm-4.mt-3.mt-sm-1
     p スポンサーリンク
     == render "shared/adsense_top"
-
-.row
-  .col-12
-    .alert.alert-danger
-      h2.h5 ユーザー登録のお願い
-      p
-        | 近々、本サイトの URL が変更になります。URL 変更に伴い、これまでの Cookie を利用した 
-        strong 回答記録がリセットされてしまいます。
-        | 回答記録を残しておきたい方は、事前に 画面右上より
-        = link_to new_user_registration_path do
-          | ユーザー登録 
-        | をお願いいたします。ユーザー登録を行うことで、URL 変更後も回答記録がそのまま保持されます。
-      p お手数をおかけしますがよろしくお願いいたします。
 
 .row
   .col-12
