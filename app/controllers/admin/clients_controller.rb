@@ -6,6 +6,6 @@ class Admin::ClientsController < Admin::ApplicationController
 
   def show
     @client = Client.find(params[:id])
-    @log_actions = @client.log_actions.order(id: :desc).includes(:card)
+    @log_actions = @client.log_actions.order(id: :desc).includes(:client).page(params[:page])
   end
 end

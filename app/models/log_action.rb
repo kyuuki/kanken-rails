@@ -4,4 +4,6 @@ class LogAction < ApplicationRecord
 
   ACTION_NG = 1
   ACTION_OK = 2
+
+  paginates_per 30
 end
