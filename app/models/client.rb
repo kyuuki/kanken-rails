@@ -86,6 +86,8 @@ class Client < ApplicationRecord
     elsif not user_agent.match(/facebookexternalhit\//).nil?
       # facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)
       return true
+    elsif not user_agent.match(/PetalBot/).nil?
+      return true
     end
 
     # ボットっぽい HTTP ヘッダチェック
