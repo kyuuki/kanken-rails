@@ -15,7 +15,11 @@
         .card-subtitle.mb-2.text-muted
           = @card.question
       .card-footer
-        = @card.comment.html_safe
+        p
+          = @card.comment.html_safe
+        = link_to "Google 検索", "https://www.google.com/search?q=#{@card.keyword_for_search}", { class: "btn btn-secondary btn-sm", target: "_blank" }
+        | &nbsp;
+        = link_to "青空文庫検索", "https://myokoym.net/aozorasearch/search?word=#{@card.keyword_for_search}", { class: "btn btn-secondary btn-sm", target: "_blank" }
 
 .row
   .col-12

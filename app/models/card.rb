@@ -32,4 +32,9 @@ class Card < ApplicationRecord
       return result.rate_ok
     end
   end
+
+  # 検索の時に使うキーワード
+  def keyword_for_search
+    return question.gsub(/\(.*\)/, "").gsub(/（.*）/, "").strip
+  end
 end
