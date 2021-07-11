@@ -3,8 +3,7 @@ Rails.application.configure do
   config.host = "rails-dev.akoba.xyz"
   config.port = 3000
   config.url = "http://#{config.host}:#{config.port}"
-  #config.blog_url = "https://blog.kanken-j1.fkoba.com"
-  config.blog_url = "https://blog.kanken.akoba.xyz"
+  config.blog_url = "https://blog.kanken-j1.fkoba.com"
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

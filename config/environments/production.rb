@@ -2,8 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.host = "kanken-j1.fkoba.com"
   config.url = "https://#{config.host}"
-  #config.blog_url = "https://blog.#{config.host}}"
-  config.blog_url = "https://blog.kanken.akoba.xyz"
+  config.blog_url = "https://blog.#{config.host}"
 
   # Code is not reloaded between requests.
   config.cache_classes = true
