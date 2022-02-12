@@ -37,4 +37,31 @@ class Card < ApplicationRecord
   def keyword_for_search
     return question.gsub(/\(.*\)/, "").gsub(/（.*）/, "").strip
   end
+
+  #
+  # 次のカード取得
+  #
+  # - LogAction が少ない場合に注意
+  # - カードが少ない場合に注意
+  #
+  def self.get_next_card(client)
+    # 3 つ前が間違いだったらそれを出題
+    log_actions = LogAction.where(client: client).order(created_at: :desc).limit(3 + 1)  # 最新の 4 つの結果 (今回のも含む)
+    log_action_this_time = log_actions.first  # 今回の結果
+    log_action_prev_3    = log_actions.last   # 3 つ前の結果
+    if (log_actions.size == 4)  # まだ 4 回答えてない場合は無視
+      if (log_action_prev_3.action == LogAction::ACTION_NG)
+        return log_action_prev_3.card
+      end
+    end
+
+    # カード 1 枚だけの場合は毎回、今回と同じになってしまうため、特別処理
+    return Card.last if Card.count == 1
+
+    # ランダムに次のカードを決める (カード 1 枚だけだと無限ループ)
+    loop do
+      next_card = Card.offset(rand(Card.count)).first
+      return next_card if next_card.id != log_action_this_time.card.id  # 違うのがでたら止める
+    end
+  end
 end

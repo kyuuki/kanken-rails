@@ -30,7 +30,7 @@ class CardsController < ApplicationController
     ClientCardResult.update(@client, card)
 
     # 次のカードを決める
-    next_card = @client.get_next_card(card)
+    next_card = Card.get_next_card(@client)
 
     redirect_to next_card
   end
