@@ -3,6 +3,19 @@ class Card < ApplicationRecord
   has_many :client_card_results, dependent: :destroy
   has_one :card_owner, dependent: :destroy
 
+  # 特定のクライアントの正答率が低い順
+  scope :order_by_rate_ok_client, -> (client) {
+    # これだと内部結合 (一度も答えていない問題が出力されない)
+    #joins(:client_card_results).where(client_card_results: {client_id: client.id}).order("client_card_results.rate_ok")
+
+    # ここら辺はドキュメント化しておかないと後から見たときにわからなそう
+
+    # 外部結合する前に client_card_results.client_id = #{client.id} として、
+    # 特定のクライアントのみの client_card_results と結合している
+    # 一度も回答していないものが最後に固まる → TODO: これを 0% 扱いにできるか？
+    joins("LEFT OUTER JOIN client_card_results ON (cards.id = client_card_results.card_id AND client_card_results.client_id = #{client.id})").order("client_card_results.rate_ok")
+  }
+
   def count_action_ok
     # 1 はなんとかせな
     self.log_actions.where(action: LogAction::ACTION_OK).count
