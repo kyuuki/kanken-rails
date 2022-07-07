@@ -17,6 +17,8 @@ class CardsController < ApplicationController
   def action
     card = Card.find(params[:id])
 
+    # TODO: 本当はトランザクション
+
     # アクションログ記録
     if not params[:act].nil? and not @client.is_bot?
       log_action = LogAction.where(client: @client).order(id: :desc).first
@@ -25,6 +27,9 @@ class CardsController < ApplicationController
         log_action.save  # TODO: エラー処理
       end
     end
+
+    # カードにアクションを起こすたびに正答率更新
+    card.update_rate_ok
 
     # クライアントのカード毎の結果を記録
     ClientCardResult.update(@client, card)

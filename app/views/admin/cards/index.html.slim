@@ -22,10 +22,11 @@
     table.table.table-bordered.table-hover
       thead
         tr
-          th.col-sm-2 ID
+          th.col-sm-1 = sort_link(@ransack, :id, "ID")
           th.col-sm-2 問題
           th.col-sm-2 答え
           th.col-sm-4 コメント
+          th.col-sm-1 = sort_link(@ransack, :rate_ok, "正答率")
           th.col-sm-2
       tbody
         == render @cards

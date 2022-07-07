@@ -16,6 +16,12 @@ class Card < ApplicationRecord
     joins("LEFT OUTER JOIN client_card_results ON (cards.id = client_card_results.card_id AND client_card_results.client_id = #{client.id})").order("client_card_results.rate_ok")
   }
 
+  # 正答率をカードにキャッシュ
+  def update_rate_ok
+    self.rate_ok = self.correct_answer_rate
+    self.save
+  end
+
   def count_action_ok
     # 1 はなんとかせな
     self.log_actions.where(action: LogAction::ACTION_OK).count

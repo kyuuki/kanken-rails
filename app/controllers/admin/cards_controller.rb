@@ -1,7 +1,7 @@
 class Admin::CardsController < Admin::ApplicationController
   def index
     @ransack = Card.ransack(params[:q])
-    @ransack.sorts = "id DESC"
+    @ransack.sorts = "id DESC" if @ransack.sorts.empty?  # デフォルトのソート順
     @cards = @ransack.result.page(params[:page])
   end
 
