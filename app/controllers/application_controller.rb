@@ -17,6 +17,13 @@ class ApplicationController < ActionController::Base
         return current_user.clients.first
       end
     end
+
+    if browser.bot?
+      # ボットにも通常通り画面は見せたい (保存したくないだけ)
+      client = Client.new
+      client.id = 1  # TODO: nil でもいい？
+      return client
+    end
     
     # TODO: 将来的には複数のクライアントでのログインを検知したい
     

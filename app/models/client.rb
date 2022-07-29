@@ -65,6 +65,12 @@ class Client < ApplicationRecord
 
   # ボットかどうか？
   def is_bot?
+    # TODO: ボットか判定するところが混乱している。これはボット判定したあとに作成したダミークライアントの場合
+    # TODO: どっちにしろボットだとアクション後に落ちる。なんとかする？ 404 にする？
+    if user_agent.nil?
+      return true
+    end
+
     # User agent チェック
     if not user_agent.match(/ Googlebot\//).nil?
       return true
