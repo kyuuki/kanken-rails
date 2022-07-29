@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
       client.id = 1  # TODO: nil でもいい？
       return client
     end
-    
+
     # TODO: 将来的には複数のクライアントでのログインを検知したい
-    
+
     client_id = get_client_id_from_cookies
 
     client = nil

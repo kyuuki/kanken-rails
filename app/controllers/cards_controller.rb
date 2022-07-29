@@ -15,6 +15,11 @@ class CardsController < ApplicationController
   end
 
   def action
+    if @client.is_bot?
+      redirect_to root_path
+      return
+    end
+
     card = Card.find(params[:id])
 
     # TODO: 本当はトランザクション
