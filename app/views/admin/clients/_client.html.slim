@@ -1,6 +1,14 @@
 tr
   td
     = link_to client.id, admin_client_path(client), class: "btn btn-default btn-xs"
+  td
+    - browser = Browser.new(client.user_agent)
+    - if browser.bot?
+      span.label.label-default Bot
+    - if browser.platform.ios?
+      span.label.label-primary iOS
+    - if browser.platform.android?
+      span.label.label-success Android
   td = client.user_agent
   - if client.is_home?
     td.bg-danger(style="width: word-break: break-all;") = client.ip
