@@ -115,7 +115,7 @@ class Client < ApplicationRecord
 
   # 自分のクライアントかどうか？
   def is_home?
-    if ip == Rails.application.secrets.home_ip
+    if ip == ENV["HOME_IP"]
       return true
     end
 

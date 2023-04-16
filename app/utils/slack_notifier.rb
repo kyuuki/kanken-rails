@@ -10,7 +10,7 @@ module SlackNotifier
   # - Slack 通知に失敗してもシステムを止めたくない (エラー表示したくない) 場合に使用する
   #
   def self.notify(message)
-    webhook_url = Rails.application.secrets.slack_webhook_url
+    webhook_url = ENV["SLACK_WEBHOOK_URL"]
     channel = "#notification"
     username = "kanken"
 
