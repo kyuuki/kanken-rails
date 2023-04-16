@@ -3,6 +3,14 @@ class Card < ApplicationRecord
   has_many :client_card_results, dependent: :destroy
   has_one :card_owner, dependent: :destroy
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["answer", "comment", "question"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
+
   # 特定のクライアントの正答率が低い順
   scope :order_by_rate_ok_client, -> (client) {
     # これだと内部結合 (一度も答えていない問題が出力されない)

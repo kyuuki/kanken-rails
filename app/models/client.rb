@@ -5,6 +5,10 @@ class Client < ApplicationRecord
   has_many :user_clients
   has_many :users, through: :user_clients
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["ip"]
+  end
+
   def self.new_from_request(request)
     # http://kyamada.hatenablog.com/entry/2012/09/21/195603
     # https://qiita.com/ledsun/items/c947b453ba97661afcef

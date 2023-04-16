@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   has_many :user_clients
   has_many :clients, through: :user_clients
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["email"]
+  end
 end
