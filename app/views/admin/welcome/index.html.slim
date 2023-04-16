@@ -22,16 +22,16 @@
   .box-body
     ul
       li
-        a href="#{Rails.configuration.url}" target="_blank"
+        a href="#{Rails.configuration.setting.url}" target="_blank"
           | 漢検 準1級 読み (Web アプリ)
       li
-        a href="#{Rails.configuration.url}/admin/" target="_blank"
+        a href="#{Rails.configuration.setting.url}/admin/" target="_blank"
           | 漢検 準1級 読み (管理画面)
       li
-        a href="#{Rails.configuration.blog_url}" target="_blank"
+        a href="#{Rails.configuration.setting.blog_url}" target="_blank"
           | 漢検ブログ
       li
-        a href="#{Rails.configuration.blog_url}/wp-admin" target="_blank"
+        a href="#{Rails.configuration.setting.blog_url}/wp-admin" target="_blank"
           | 漢検ブログ (管理画面)
       li
         a href="https://twitter.com/kanken_ja" target="_blank"
@@ -119,7 +119,7 @@
         a href="https://github.com/kyuuki/kanken-rails" target="_blank"
           | GitHub (ソースコード)
       li
-        a href="#{Rails.configuration.url}" target="_blank"
+        a href="#{Rails.configuration.setting.url}" target="_blank"
           | 本番環境
 
   .box-footer

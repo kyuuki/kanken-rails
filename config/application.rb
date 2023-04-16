@@ -19,14 +19,13 @@ module KankenRails
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    # 設定ファイル
+    # https://railsguides.jp/configuring.html#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E8%A8%AD%E5%AE%9A
+    config.setting = config_for(:setting)
+
     # i18n
     # https://railsguides.jp/i18n.html
     config.i18n.default_locale = :ja
     config.time_zone = "Tokyo"
-
-    config.host = "rails-dev.akoba.xyz"
-    config.port = 3000
-    config.url = "http://#{config.host}:#{config.port}"
-    config.blog_url = "https://blog.kanken-j1.fkoba.com"
   end
 end
