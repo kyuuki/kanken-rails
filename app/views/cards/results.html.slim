@@ -1,0 +1,19 @@
+- set_meta_tags og: { title: default_meta_tags[:site] }
+
+.row.mt-4
+  .col-12
+    = paginate @cards, window: 1
+
+    table.table.table-bordered.table-hover
+      thead
+        tr
+          th rowspan=2 問題
+          th colspan=2 正答率
+          th rowspan=2
+        tr
+          th あなた
+          th みんな
+      tbody
+        = render partial: "card", collection: @cards
+
+    = paginate @cards, window: 1

@@ -44,4 +44,9 @@ class CardsController < ApplicationController
 
     redirect_to next_card
   end
+
+  # 正答率一覧
+  def results
+    @cards = Card.order_by_rate_ok_client(@client).page(params[:page]).per(10)
+  end
 end

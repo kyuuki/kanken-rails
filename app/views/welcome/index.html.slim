@@ -19,14 +19,14 @@
   .col-12
     .card
       .card-body
-        h2.h4.card-title 本サイトの特長
+        h2.h5.card-title 本サイトの特長
         ul
           li 漢検 準1級の読み問題を次から次へと只管、出し続けます
           li
             | 間違った問題は 3 問後に再び出題されるため、
             span.text-primary 確実に記憶できます！
-          li 答えのページに記憶の定着に役に立ちそうな情報を表示しています。
-          li 出題頻度の高くない問題を中心に出題するので、市販テキストとの併用が効果的です。
+          li 答えのページに記憶の定着に役に立ちそうな情報を表示しています
+          li 出題頻度の高くない問題を中心に出題するので、市販テキストとの併用が効果的です
         ul
           li
             span.h5.text-danger
@@ -41,9 +41,30 @@
 
 .row
   .col-12
-    = link_to "開始！", start_path, class: "btn btn-primary btn-lg btn-block", rel: "nofollow"
+    .card
+      .card-body
+        p 只管、解いていきましょう！
+        = link_to "開始！", start_path, class: "btn btn-primary btn-lg btn-block", rel: "nofollow"
 
 .row
+  .col-sm-6.mb-3.mb-sm-0
+    .card.h-100
+      .card-body
+        p
+          | 自分の正答率はここから確認できます。
+          br
+          | 苦手な問題を確認しましょう！
+        p = link_to "正答率一覧", results_cards_path, class: "btn btn-secondary"
+
+  .col-sm-6
+    .card.h-100
+      .card-body
+        p ユーザー登録をするとパソコン、スマホで進捗を共有できます。
+        p
+          = link_to "ユーザー登録", new_user_registration_path, class: "btn btn-secondary mr-2"
+          = link_to "ログイン", new_user_registration_path, class: "btn btn-secondary"
+
+/.row
   .col-12
     = paginate @cards, window: 1
 
@@ -61,7 +82,7 @@
 
     = paginate @cards, window: 1
 
-.row
+/.row
   .col-12
     = link_to "開始！", start_path, class: "btn btn-primary btn-lg btn-block", rel: "nofollow"
 

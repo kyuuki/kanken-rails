@@ -9,6 +9,10 @@ Rails.application.routes.draw do
       get 'answer'
       get 'action'
     end
+
+    collection do
+      get 'results'
+    end
   end
 
   devise_for :users,
