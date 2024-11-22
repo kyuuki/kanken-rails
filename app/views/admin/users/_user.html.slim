@@ -1,7 +1,9 @@
 tr
   td
     = link_to user.id, admin_user_path(user), class: "btn btn-default btn-xs"
-  td = link_to user.clients.first&.id, admin_client_path(user.clients.first), class: "btn btn-default btn-xs"
+  td
+    - if user.clients.size != 0
+      = link_to user.clients.first&.id, admin_client_path(user.clients.first), class: "btn btn-default btn-xs"
   td = user.email
   td = l user.created_at
   td = l user.updated_at
