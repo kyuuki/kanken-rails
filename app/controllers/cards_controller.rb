@@ -47,6 +47,9 @@ class CardsController < ApplicationController
 
   # 正答率一覧
   def results
+    # ボットには表示させない
+    render plain: "ok" and return if browser.bot?
+
     @cards = Card.order_by_rate_ok_client(@client).page(params[:page]).per(10)
   end
 end
