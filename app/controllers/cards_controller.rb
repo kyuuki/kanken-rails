@@ -2,7 +2,7 @@ class CardsController < ApplicationController
   def show
     @card = Card.find(params[:id])
 
-    @latest_log_actions = LogAction.where(client: @client, card: @card).where.not(action: nil).order(id: :desc).limit(10)
+    @latest_log_actions = LogAction.where(client: @client, card: @card).where(action: [LogAction::ACTION_OK, LogAction::ACTION_NG]).order(id: :desc).limit(10)
   end
 
   def answer
